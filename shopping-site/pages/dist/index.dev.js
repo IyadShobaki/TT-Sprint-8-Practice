@@ -8,6 +8,8 @@ var _DefaultCard = _interopRequireDefault(require("../components/DefaultCard.js"
 
 var _HorizontalCard = _interopRequireDefault(require("../components/HorizontalCard.js"));
 
+var _FilterButton = _interopRequireDefault(require("../components/FilterButton.js"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var defaultCardList = new _Section["default"]({
@@ -36,3 +38,14 @@ _constants.horizontalCardButton.addEventListener("click", function () {
 });
 
 defaultCardList.renderItems();
+var filterList = new _Section["default"]({
+  data: _constants.filterButtons,
+  renderer: function renderer(item) {
+    var filterButton = new _FilterButton["default"]({
+      data: item
+    }, _constants.filterButtonTemplate);
+    var filterButtonElement = filterButton.generateButton();
+    filterList.setItem(filterButtonElement);
+  }
+}, _constants.filterListSelector);
+filterList.renderItems();

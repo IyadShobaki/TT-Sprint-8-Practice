@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.horizontalCardButton = exports.defaultCardButton = exports.popupCaption = exports.popupCloseButton = exports.popupImage = exports.popupElement = exports.cardList = exports.cardListSelector = exports.items = void 0;
+exports.filterButtonTemplate = exports.filterListSelector = exports.filterButtons = exports.horizontalCardButton = exports.defaultCardButton = exports.popupCaption = exports.popupCloseButton = exports.popupImage = exports.popupElement = exports.cardList = exports.cardListSelector = exports.items = void 0;
 var items = [{
   image: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/oop/moved_card_detail.jpg",
   title: "BIOLOID",
@@ -21,6 +21,18 @@ var items = [{
   price: "$2000"
 }];
 exports.items = items;
+var filterButtons = [{
+  buttonClass: "filter__button_type_grid",
+  isGrid: true
+}, {
+  buttonClass: "filter__button_type_column",
+  isGrid: false
+}];
+exports.filterButtons = filterButtons;
+var filterListSelector = ".filter";
+exports.filterListSelector = filterListSelector;
+var filterButtonTemplate = ".filter-button";
+exports.filterButtonTemplate = filterButtonTemplate;
 var cardListSelector = ".card-list__items";
 exports.cardListSelector = cardListSelector;
 var cardList = document.querySelector(".card-list__items");

@@ -3,10 +3,14 @@ import {
   cardListSelector,
   defaultCardButton,
   horizontalCardButton,
+  filterButtons,
+  filterListSelector,
+  filterButtonTemplate,
 } from "../utils/constants.js";
 import Section from "../components/Section.js";
 import DefaultCard from "../components/DefaultCard.js";
 import HorizontalCard from "../components/HorizontalCard.js";
+import FilterButton from "../components/FilterButton.js";
 
 const defaultCardList = new Section(
   {
@@ -43,3 +47,22 @@ horizontalCardButton.addEventListener("click", () => {
 });
 
 defaultCardList.renderItems();
+
+const filterList = new Section(
+  {
+    data: filterButtons,
+    renderer: (item) => {
+      const filterButton = new FilterButton(
+        { data: item },
+        filterButtonTemplate
+      );
+
+      const filterButtonElement = filterButton.generateButton();
+
+      filterList.setItem(filterButtonElement);
+    },
+  },
+  filterListSelector
+);
+
+filterList.renderItems();

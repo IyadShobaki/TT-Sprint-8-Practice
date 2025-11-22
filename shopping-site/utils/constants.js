@@ -25,6 +25,18 @@ const items = [
   },
 ];
 
+const filterButtons = [
+  {
+    buttonClass: "filter__button_type_grid",
+    isGrid: true,
+  },
+  {
+    buttonClass: "filter__button_type_column",
+    isGrid: false,
+  },
+];
+const filterListSelector = ".filter";
+const filterButtonTemplate = ".filter-button";
 const cardListSelector = ".card-list__items";
 const cardList = document.querySelector(".card-list__items");
 const popupElement = document.querySelector(".popup");
@@ -46,4 +58,7 @@ export {
   popupCaption,
   defaultCardButton,
   horizontalCardButton,
+  filterButtons,
+  filterListSelector,
+  filterButtonTemplate,
 };
