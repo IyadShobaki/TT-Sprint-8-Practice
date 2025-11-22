@@ -23,13 +23,17 @@ var cardList = new _Section["default"]({
     cardList.setItem(cardElement);
   }
 }, _constants.cardListSection);
-cardList.renderItems();
+cardList.renderItems(); // create a form instance
+
 var form = new _SubmitForm["default"]({
   formSelector: ".form-template"
-});
-var formElement = form.generateForm(); // use Section to place form on DOM
+}); // generate form markup
+
+var formElement = form.generateForm(); // initialize a class responsible
+// for adding the form to the page
 
 var formRenderer = new _Section["default"]({
   data: []
-}, _constants.formSection);
+}, _constants.formSection); // add the form to the page
+
 formRenderer.setItem(formElement);

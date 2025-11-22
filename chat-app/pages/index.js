@@ -29,10 +29,14 @@ const cardList = new Section(
 
 cardList.renderItems();
 
+// create a form instance
 const form = new SubmitForm({ formSelector: ".form-template" });
 
+// generate form markup
 const formElement = form.generateForm();
 
-// use Section to place form on DOM
+// initialize a class responsible
+// for adding the form to the page
 const formRenderer = new Section({ data: [] }, formSection);
+// add the form to the page
 formRenderer.setItem(formElement);
