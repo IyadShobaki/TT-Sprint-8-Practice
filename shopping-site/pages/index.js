@@ -1,12 +1,19 @@
-import { defaultCardButton, horizontalCardButton } from "../utils/constants.js";
-import { renderElements } from "../utils/utils.js";
+import {
+  items,
+  cardListSelector,
+  defaultCardButton,
+  horizontalCardButton,
+} from "../utils/constants.js";
+import Section from "../components/Section.js";
+
+const defaultCardList = new Section({ data: items }, cardListSelector);
 
 defaultCardButton.addEventListener("click", () => {
-  renderElements(true);
+  defaultCardList.renderItems(true);
 });
 
 horizontalCardButton.addEventListener("click", () => {
-  renderElements(false);
+  defaultCardList.renderItems(false);
 });
 
-renderElements();
+defaultCardList.renderItems();

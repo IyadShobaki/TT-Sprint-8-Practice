@@ -25,6 +25,7 @@ const items = [
   },
 ];
 
+const cardListSelector = ".card-list__items";
 const cardList = document.querySelector(".card-list__items");
 const popupElement = document.querySelector(".popup");
 const popupImage = document.querySelector(".popup__image");
@@ -37,6 +38,7 @@ const horizontalCardButton = document.querySelector(
 
 export {
   items,
+  cardListSelector,
   cardList,
   popupElement,
   popupImage,
