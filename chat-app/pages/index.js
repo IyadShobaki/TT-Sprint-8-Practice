@@ -1,7 +1,12 @@
 import Section from "../components/Section.js";
 import UserCard from "../components/UserCard.js";
 import DefaultCard from "../components/DefaultCard.js";
-import { messageList, cardListSection } from "../utils/constants.js";
+import SubmitForm from "../components/SubmitForm.js";
+import {
+  messageList,
+  cardListSection,
+  formSection,
+} from "../utils/constants.js";
 
 const cardList = new Section(
   {
@@ -23,3 +28,11 @@ const cardList = new Section(
 );
 
 cardList.renderItems();
+
+const form = new SubmitForm({ formSelector: ".form-template" });
+
+const formElement = form.generateForm();
+
+// use Section to place form on DOM
+const formRenderer = new Section({ data: [] }, formSection);
+formRenderer.setItem(formElement);

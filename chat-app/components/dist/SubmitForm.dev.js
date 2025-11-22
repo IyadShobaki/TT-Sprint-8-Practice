@@ -11,42 +11,47 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var Section =
+var SubmitForm =
 /*#__PURE__*/
 function () {
-  function Section(_ref, containerSelector) {
-    var data = _ref.data,
-        renderer = _ref.renderer;
+  function SubmitForm(_ref) {
+    var formSelector = _ref.formSelector;
 
-    _classCallCheck(this, Section);
+    _classCallCheck(this, SubmitForm);
 
-    // data - an array of elements to be rendered
-    this._renderedItems = data; // renderer - to be called on elements of data
-
-    this._renderer = renderer;
-    this._container = document.querySelector(containerSelector);
+    this._formSelector = formSelector;
   }
 
-  _createClass(Section, [{
-    key: "renderItems",
-    value: function renderItems() {
-      var _this = this;
-
-      // Iterate over the _renderedItems array of messages
-      this._renderedItems.forEach(function (item) {
-        return _this._renderer(item);
-      });
+  _createClass(SubmitForm, [{
+    key: "_getTemplate",
+    value: function _getTemplate() {
+      var formElement = document.querySelector(this._formSelector).content.querySelector(".form").cloneNode(true);
+      this._element = formElement;
     }
   }, {
-    key: "setItem",
-    value: function setItem(element) {
-      // append single element to DOM
-      this._container.append(element);
+    key: "generateForm",
+    value: function generateForm() {
+      this._getTemplate();
+
+      this._setEventListeners();
+
+      return this._element;
+    }
+  }, {
+    key: "_setEventListeners",
+    value: function _setEventListeners() {
+      var _this = this;
+
+      this._element.addEventListener("submit", function (evt) {
+        evt.preventDefault();
+
+        _this._element.reset();
+      });
     }
   }]);
 
-  return Section;
+  return SubmitForm;
 }();
 
-var _default = Section;
+var _default = SubmitForm;
 exports["default"] = _default;

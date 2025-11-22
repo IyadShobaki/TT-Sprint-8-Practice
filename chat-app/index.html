@@ -8,6 +8,7 @@
   </head>
   <body class="page">
     <section class="card-list"></section>
+    <section class="form-section"></section>
     <template class="card-template card-template_type_user">
       <div class="card card_type_user">
         <div class="card__text">
@@ -22,6 +23,19 @@
           <p class="card__paragraph"></p>
         </div>
       </div>
+    </template>
+    <template class="form-template">
+      <form class="form">
+        <input
+          class="form__input"
+          name="text"
+          type="text"
+          required
+          minlength="1"
+          placeholder="Enter your message"
+        />
+        <button class="form__submit">Submit</button>
+      </form>
     </template>
     <script type="module" src="./pages/index.js"></script>
   </body>

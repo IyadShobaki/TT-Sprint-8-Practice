@@ -1,7 +1,15 @@
-body {
+body,
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.page {
   font-family: Helvetica, Arial, sans-serif;
   background: white;
   font-size: 14px;
+  display: flex;
+  flex-direction: column;
   padding: 40px 20px;
 }
 
@@ -153,4 +161,48 @@ body {
 
 .card_is-active .card__text {
   box-shadow: -1px 2px 4px rgba(0, 0, 0, 0.25), 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.form__input {
+  width: 60%;
+  font-size: 14px;
+  line-height: 19px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #979797;
+  position: relative;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+  outline: none;
+  padding: 10px 0;
+}
+
+.form__submit {
+  width: 40%;
+  font-size: 16px;
+  line-height: 19px;
+  color: #fff;
+  background: #007dff;
+  border-radius: 1px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 12px;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+}
+
+.form-section {
+  margin-top: auto;
 }

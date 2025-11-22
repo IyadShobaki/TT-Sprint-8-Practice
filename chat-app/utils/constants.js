@@ -14,5 +14,5 @@ const messageList = [
 ];
 
 const cardListSection = ".card-list";
-
-export { messageList, cardListSection };
+const formSection = ".form-section";
+export { messageList, cardListSection, formSection };

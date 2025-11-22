@@ -6,6 +6,8 @@ var _UserCard = _interopRequireDefault(require("../components/UserCard.js"));
 
 var _DefaultCard = _interopRequireDefault(require("../components/DefaultCard.js"));
 
+var _SubmitForm = _interopRequireDefault(require("../components/SubmitForm.js"));
+
 var _constants = require("../utils/constants.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -22,3 +24,12 @@ var cardList = new _Section["default"]({
   }
 }, _constants.cardListSection);
 cardList.renderItems();
+var form = new _SubmitForm["default"]({
+  formSelector: ".form-template"
+});
+var formElement = form.generateForm(); // use Section to place form on DOM
+
+var formRenderer = new _Section["default"]({
+  data: []
+}, _constants.formSection);
+formRenderer.setItem(formElement);
