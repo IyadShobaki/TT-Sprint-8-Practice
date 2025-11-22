@@ -13,4 +13,6 @@ const messageList = [
   },
 ];
 
-export { messageList };
+const cardListSection = ".card-list";
+
+export { messageList, cardListSection };

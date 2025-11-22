@@ -1,13 +1,11 @@
-import DefaultCard from "../components/DefaultCard.js";
-import UserCard from "../components/UserCard.js";
-import { messageList } from "../utils/constants.js";
+import Section from "../components/Section.js";
+import { messageList, cardListSection } from "../utils/constants.js";
 
-messageList.forEach((item) => {
-  const card = item.isOwner
-    ? new UserCard(item, ".card-template_type_user")
-    : new DefaultCard(item, ".card-template_type_default");
+const cardList = new Section(
+  {
+    data: messageList,
+  },
+  cardListSection
+);
 
-  const cardElement = card.generateCard();
-
-  document.body.append(cardElement);
-});
+cardList.renderItems();
