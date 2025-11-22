@@ -5,12 +5,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
-var _DefaultCard = _interopRequireDefault(require("./DefaultCard.js"));
-
-var _HorizontalCard = _interopRequireDefault(require("./HorizontalCard.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -21,11 +15,13 @@ var Section =
 /*#__PURE__*/
 function () {
   function Section(_ref, containerSelector) {
-    var data = _ref.data;
+    var data = _ref.data,
+        renderer = _ref.renderer;
 
     _classCallCheck(this, Section);
 
     this._renderedItems = data;
+    this._renderer = renderer;
     this._container = document.querySelector(containerSelector);
   }
 
@@ -41,16 +37,13 @@ function () {
     }
   }, {
     key: "renderItems",
-    value: function renderItems(isGrid) {
+    value: function renderItems() {
       var _this = this;
 
       this.clear();
 
       this._renderedItems.forEach(function (item) {
-        var card = isGrid ? new _DefaultCard["default"](item, ".default-card") : new _HorizontalCard["default"](item, ".horizontal-card");
-        var cardElement = card.generateCard();
-
-        _this.setItem(cardElement);
+        return _this._renderer(item);
       });
     }
   }]);
