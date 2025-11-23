@@ -38,13 +38,6 @@ const horizontalCardList = new Section(
   },
   cardListSelector
 );
-defaultCardButton.addEventListener("click", () => {
-  defaultCardList.renderItems();
-});
-
-horizontalCardButton.addEventListener("click", () => {
-  horizontalCardList.renderItems();
-});
 
 defaultCardList.renderItems();
 
@@ -53,7 +46,18 @@ const filterList = new Section(
     data: filterButtons,
     renderer: (item) => {
       const filterButton = new FilterButton(
-        { data: item },
+        {
+          data: item,
+          handleButtonClick: (isGrid) => {
+            if (isGrid) {
+              defaultCardList.clear();
+              defaultCardList.renderItems();
+            } else {
+              horizontalCardList.clear();
+              horizontalCardList.renderItems();
+            }
+          },
+        },
         filterButtonTemplate
       );
 

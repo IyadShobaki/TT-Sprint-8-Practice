@@ -1,7 +1,9 @@
 class FilterButton {
-  constructor({ data }, buttonSelector) {
+  constructor({ data, handleButtonClick }, buttonSelector) {
     this._additionalButtonClass = data.buttonClass;
     this._buttonSelector = buttonSelector;
+    this._handleButtonClick = handleButtonClick;
+    this._isGrid = data.isGrid;
   }
 
   _getTemplate() {
@@ -17,7 +19,14 @@ class FilterButton {
     this._element = this._getTemplate();
     this._element.classList.add(this._additionalButtonClass);
 
+    this._setEventListeners();
     return this._element;
+  }
+
+  _setEventListeners() {
+    this._element.addEventListener("click", () => {
+      this._handleButtonClick(this._isGrid);
+    });
   }
 }
 

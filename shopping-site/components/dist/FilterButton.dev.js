@@ -15,12 +15,15 @@ var FilterButton =
 /*#__PURE__*/
 function () {
   function FilterButton(_ref, buttonSelector) {
-    var data = _ref.data;
+    var data = _ref.data,
+        handleButtonClick = _ref.handleButtonClick;
 
     _classCallCheck(this, FilterButton);
 
     this._additionalButtonClass = data.buttonClass;
     this._buttonSelector = buttonSelector;
+    this._handleButtonClick = handleButtonClick;
+    this._isGrid = data.isGrid;
   }
 
   _createClass(FilterButton, [{
@@ -36,7 +39,18 @@ function () {
 
       this._element.classList.add(this._additionalButtonClass);
 
+      this._setEventListeners();
+
       return this._element;
+    }
+  }, {
+    key: "_setEventListeners",
+    value: function _setEventListeners() {
+      var _this = this;
+
+      this._element.addEventListener("click", function () {
+        _this._handleButtonClick(_this._isGrid);
+      });
     }
   }]);
 

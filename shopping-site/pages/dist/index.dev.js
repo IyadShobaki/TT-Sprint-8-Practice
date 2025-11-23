@@ -28,21 +28,21 @@ var horizontalCardList = new _Section["default"]({
     horizontalCardList.setItem(cardElement);
   }
 }, _constants.cardListSelector);
-
-_constants.defaultCardButton.addEventListener("click", function () {
-  defaultCardList.renderItems();
-});
-
-_constants.horizontalCardButton.addEventListener("click", function () {
-  horizontalCardList.renderItems();
-});
-
 defaultCardList.renderItems();
 var filterList = new _Section["default"]({
   data: _constants.filterButtons,
   renderer: function renderer(item) {
     var filterButton = new _FilterButton["default"]({
-      data: item
+      data: item,
+      handleButtonClick: function handleButtonClick(isGrid) {
+        if (isGrid) {
+          defaultCardList.clear();
+          defaultCardList.renderItems();
+        } else {
+          horizontalCardList.clear();
+          horizontalCardList.renderItems();
+        }
+      }
     }, _constants.filterButtonTemplate);
     var filterButtonElement = filterButton.generateButton();
     filterList.setItem(filterButtonElement);
