@@ -30,7 +30,20 @@ const cardList = new Section(
 cardList.renderItems();
 
 // create a form instance
-const form = new SubmitForm({ formSelector: ".form-template" });
+const form = new SubmitForm({
+  formSelector: ".form-template",
+  // An object we pass when calling the handleFormSubmit() function
+  // will appear in the place of the formData parameter
+  handleFormSubmit: (formData) => {
+    // we pass the formData object containing data from the form
+    // to a new instance of UserCard class
+    const card = new UserCard(formData, ".card-template_type_user");
+
+    const cardElement = card.generateCard();
+
+    cardList.setItem(cardElement);
+  },
+});
 
 // generate form markup
 const formElement = form.generateForm();

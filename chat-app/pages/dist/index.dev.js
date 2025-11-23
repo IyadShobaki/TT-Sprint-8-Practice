@@ -26,7 +26,16 @@ var cardList = new _Section["default"]({
 cardList.renderItems(); // create a form instance
 
 var form = new _SubmitForm["default"]({
-  formSelector: ".form-template"
+  formSelector: ".form-template",
+  // An object we pass when calling the handleFormSubmit() function
+  // will appear in the place of the formData parameter
+  handleFormSubmit: function handleFormSubmit(formData) {
+    // we pass the formData object containing data from the form
+    // to a new instance of UserCard class
+    var card = new _UserCard["default"](formData, ".card-template_type_user");
+    var cardElement = card.generateCard();
+    cardList.setItem(cardElement);
+  }
 }); // generate form markup
 
 var formElement = form.generateForm(); // initialize a class responsible

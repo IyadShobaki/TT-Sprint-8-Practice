@@ -15,11 +15,13 @@ var SubmitForm =
 /*#__PURE__*/
 function () {
   function SubmitForm(_ref) {
-    var formSelector = _ref.formSelector;
+    var formSelector = _ref.formSelector,
+        handleFormSubmit = _ref.handleFormSubmit;
 
     _classCallCheck(this, SubmitForm);
 
     this._formSelector = formSelector;
+    this._handleFormSubmit = handleFormSubmit;
   }
 
   _createClass(SubmitForm, [{
@@ -43,10 +45,30 @@ function () {
       var _this = this;
 
       this._element.addEventListener("submit", function (evt) {
-        evt.preventDefault();
+        evt.preventDefault(); // Add a _handleFormSubmit() function call
+        // Pass an object which is the result of the _getInputValues work to it
+
+        _this._handleFormSubmit(_this._getInputValues());
 
         _this._element.reset();
       });
+    }
+  }, {
+    key: "_getInputValues",
+    value: function _getInputValues() {
+      var _this2 = this;
+
+      // Get all field elements
+      this._inputList = this._element.querySelectorAll(".form__input"); // Create an empty object
+
+      this._formValues = {}; //Add the values of the fields to this object
+
+      this._inputList.forEach(function (input) {
+        _this2._formValues[input.name] = input.value;
+      }); // Return the values object
+
+
+      return this._formValues;
     }
   }]);
 
